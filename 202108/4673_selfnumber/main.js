@@ -1,29 +1,16 @@
-// 1 => 1 + 0 + 1 = 2
-// 2 => 2 + 0 + 2 = 4
-// 3 => 3 + 0 + 3 = 6
-// 4 => 4 + 0 + 4 = 8
-// 5 => 5 + 0 + 5 = 10
-// 6 => 6 + 0 + 6 = 12
-
-// 100 => 100 + 0 + 0 + 1 = 101
-// 91 => 91 + 9 + 1 = 101
-
-// 10000 => 10000 + 1 + 0 0 0 0
-// 9000 => 9000 + 9 => 9009
-// 9900 => 9900 + 9 + 9 => 9918
-// 9990 => 9990 + 9 + 9 + 9 => 9927
-
-// 10 => 10 + 1 + 0 = 11var fs = require("fs");
-// 12 => 10 + 1 + 2 = 13
-
-// int / 10, 100, 1000 나머지가 소숫점 => 0로 만듬,
 const start = new Date();
 const N = [];
-
 for (let i = 1; i <= 10000; i++) {
   N.push(i);
 }
-console.log(N);
 
+const copyN = [...N];
+for (let i = 0; i <= N.length - 1; i++) {
+  const notSelfNumber = N[i] + Math.floor(Math.floor((N[i] / 1000) % 10) + Math.floor((N[i] / 100) % 10) + Math.floor((N[i] / 10) % 10) + Math.floor((N[i] / 1) % 10));
+  if (copyN.includes(notSelfNumber) && notSelfNumber <= 10000) {
+    copyN.splice(copyN.indexOf(notSelfNumber), 1);
+  }
+}
+
+copyN.forEach((value) => console.log(value));
 const done = new Date();
-console.log(done - start);
