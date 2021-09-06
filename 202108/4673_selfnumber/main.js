@@ -1,4 +1,3 @@
-const start = new Date();
 const N = [];
 for (let i = 1; i <= 10000; i++) {
   N.push(i);
@@ -13,4 +12,3 @@ for (let i = 0; i <= N.length - 1; i++) {
 }
 
 copyN.forEach((value) => console.log(value));
-const done = new Date();
