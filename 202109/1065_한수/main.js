@@ -2,30 +2,22 @@ const N = require("fs")
   .readFileSync(__dirname + "/input.txt")
   .toString();
 
-const oneNumber = new Array(parseInt(N));
-
+const input = parseInt(N);
 let count = 0;
 
-for (let i = 1; i <= oneNumber.length; i++) {
+for (let i = 1; i <= input; i++) {
   if (i < 100) {
     count++;
   } else {
     const splitedNum = i.toString().split("");
-    const check = splitedNum.reduce((prev, cur, index) => {
-      if (!splitedNum[index + 1]) {
-        return prev;
-      }
-      const curArthmeticSeq = parseInt(splitedNum[index]) - parseInt(splitedNum[index + 1]);
-      if (prev === curArthmeticSeq) {
-        return prev;
-      } else {
-        return false;
-      }
-    }, parseInt(splitedNum[0]) - parseInt(splitedNum[1]));
-    if (check) {
+    const A = parseInt(splitedNum[0]) - parseInt(splitedNum[1]);
+    const B = parseInt(splitedNum[1]) - parseInt(splitedNum[2]);
+    const C = splitedNum[3] ? parseInt(splitedNum[1]) - parseInt(splitedNum[2]) : null;
+    if (A !== B) {
+    } else if (C && B !== C) {
+    } else {
       count++;
     }
   }
 }
-
 console.log(count);
